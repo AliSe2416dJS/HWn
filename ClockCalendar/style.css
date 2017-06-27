@@ -1,0 +1,26 @@
+body {
+	background-color: grey;
+}
+
+.ClockCalendar {
+	width: 35%;
+	height: 40%;
+	margin: 200px auto;
+	padding: 15px;
+	text-align: center;
+	color: darkgreen;
+	font-size: 36px;
+	font-weight: bold;
+	border-radius: 150px;
+	background-color: yellowgreen;
+}
+
+.hovered {
+	color: yellow;
+	background-color: green;
+}
+
+/*.ClockCalendar:hover {
+	color: yellowgreen;
+	background-color: darkgreen;
+}*/
