@@ -28,11 +28,11 @@ function findSequence (n, m) {
 }
 
 function preValidate6 (n, m) {
-    let inputIsInvalid = isNaN(context['min']) || isNaN(context['max']) ||
-    		context['min'].toString().length !== 6 ||
-    		context['max'].toString().length !== 6;
+    let isInteger = n => (n ^ 0) === n,
+        inputIsValid = isFinite(n) && isFinite(m) && 
+            n > 0 && m >= 0 && isInteger(n);
 
-    if (inputIsInvalid) {
+    if (!inputIsValid) {
         throw new Error('Input is not valid');
     }
 }

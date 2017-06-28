@@ -38,11 +38,11 @@ let context = {
 
 // Input for Task6 - Number sequence
 let rowLength = 5,
-    minSquare = 200;
+    minSquare = 0;
 
 // Input for Task7 - Fibonacci numbers
 let context1 = {min: 1, max: 100},
-    context2 = {length: 10};
+    context2 = {length: 3};
 
 output();
 

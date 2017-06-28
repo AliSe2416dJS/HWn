@@ -5,7 +5,7 @@ function task5 (context) {
 
     try {
         preValidate5(context);
-        out = luckyTickets(context);
+        out = countLuckyTickets(context);
     } catch (err) {
         out = {
             status: 'failed', 
@@ -16,7 +16,7 @@ function task5 (context) {
     return out;
 }
 
-function luckyTickets (context) {
+function countLuckyTickets (context) {
     let min = Number(context.min),
         max = Number(context.max),
         complicatedCounter = 0,
@@ -60,12 +60,6 @@ function luckyTickets (context) {
         ticketDigitList.forEach(digit => {
             sumOdd += (digit % 2) ? digit : 0;
             sumEven += !(digit % 2) ? digit : 0;
-
-           /* if (digit % 2) {
-                sumOdd += digit;
-            } else {
-                sumEven += digit;
-            }*/
         });
 
         if (sumEven === sumOdd) {
