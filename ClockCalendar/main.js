@@ -6,18 +6,23 @@ function init () {
     let widget = new Widget(), 
         div = document.querySelector('.ClockCalendar'),
         changeStyle = () => div.classList.toggle('hovered'),
-        refresh = (widget) => div.innerHTML = widget.getWidgetValue();
-        
+        refresh = (widgetValue) => div.innerHTML = widgetValue;
 
-    refresh(widget);
-    setInterval(() => refresh(widget), 1000);
+    refresh(widget.getWidgetValue());
+    setInterval(() => refresh(widget.getWidgetValue()), 1000);
 
     div.addEventListener('mouseover', changeStyle, false);
     div.addEventListener('mouseout', changeStyle, false);
-    div.addEventListener('click', () => widget.switchFormat(), false); // lose of context
+
+    div.addEventListener('click', () => {
+        widget.switchFormat();
+        refresh(widget.getWidgetValue());
+    }, false);
+
     div.addEventListener('contextmenu', e => {
         e.preventDefault();
         widget.switchMode();
+        refresh(widget.getWidgetValue());
     }, false);
 }
 
