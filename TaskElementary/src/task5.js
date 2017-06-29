@@ -93,8 +93,10 @@ function preValidate5 (context) {
     let inputIsValid = context.min && context.max &&
             typeof context.min === 'string' &&
             typeof context.max === 'string' &&
-            !isNaN(context.min) && !isNaN(context.max) &&
-            context.min.length === 6 &&context.max.length === 6;
+            isFinite(context.min) && isFinite(context.max) &&
+            +context.min >= 0 && +context.max >= 0 &&
+            context.min.length === 6 && context.max.length === 6 &&
+            context.min < context.max;
 
     if (!inputIsValid) {
         throw new Error('Input is not valid');

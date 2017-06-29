@@ -97,9 +97,9 @@ function removeDelimiter (digitList) {
 }
 
 function preValidate4 (number) {
-    let numberIsInvalid = (typeof number !== 'string') || isNaN(number) || +number < 0;
+    let numberIsValid = (typeof number === 'string') && isFinite(number) && +number >= 0;
 
-    if (numberIsInvalid) {
+    if (!numberIsValid) {
         throw new Error('number is not valid');
     }
 }

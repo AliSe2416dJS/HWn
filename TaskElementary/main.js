@@ -33,7 +33,7 @@ let number = '789737983463';
 // Input for Task5 - Lucky tickets
 let context = {
         min: '000000', 
-        max: '999999'
+        max: '111111'
     };
 
 // Input for Task6 - Number sequence

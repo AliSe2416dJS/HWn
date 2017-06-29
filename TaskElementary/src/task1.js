@@ -29,7 +29,7 @@ function createChessBoard (width, height, character) {
         
         board += '|\n';
     }
-    
+    console.log(board.length);
     return board;
 }
 

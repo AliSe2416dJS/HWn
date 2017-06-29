@@ -14,15 +14,15 @@ function task2 (envelope1, envelope2) {
 }
 
 function findSmallerEnvelope (envelope1, envelope2) {
-	let firstfirstIsSmaller = firstIsSmaller(envelope1, envelope2),
-		secondfirstIsSmaller = firstIsSmaller(envelope2, envelope1),
+	let envelope1IsSmaller = firstIsSmaller(envelope1, envelope2),
+		envelope2IsSmaller = firstIsSmaller(envelope2, envelope1),
 		smallerEnvelope = 0;
 	
-	if (firstfirstIsSmaller) {
+	if (envelope1IsSmaller) {
 		smallerEnvelope = 1;
 	}  
 
-	if (secondfirstIsSmaller) {
+	if (envelope2IsSmaller) {
 		smallerEnvelope = 2;
 	} 
 	
