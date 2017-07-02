@@ -1,9 +1,12 @@
 'use strict';
 
 function Widget () {
-    let dateFormat = 'ua-date',
+    let now = new Date(),
+        dateFormat = 'ua-date',
         timeFormat = 'full',
         mode = 'clock';
+
+    setInterval(() => now = new Date, 1000);
 
     this.switchMode = function () {
         mode = (mode === 'clock') ? 'calendar' : 'clock';
@@ -22,21 +25,19 @@ function Widget () {
     };
 
     function getTime () {
-        let currentTime = new Date(),
-            hh = toTwoDigits(currentTime.getHours()),
-            mm = toTwoDigits(currentTime.getMinutes()),
-            ss = toTwoDigits(currentTime.getSeconds());
+        let hh = toTwoDigits(now.getHours()),
+            mm = toTwoDigits(now.getMinutes()),
+            ss = toTwoDigits(now.getSeconds());
 
         return (timeFormat === 'full') ? `${hh}:${mm}:${ss}` : `${hh}:${mm}`;
     }
 
     function getDate () {
-        let currentDate = new Date(),
-            dd, mm, yy, yyyy;
+        let dd, mm, yy, yyyy;
 
-        dd = toTwoDigits(currentDate.getDate());
-        mm = toTwoDigits(currentDate.getMonth() + 1);
-        yyyy = currentDate.getFullYear();
+        dd = toTwoDigits(now.getDate());
+        mm = toTwoDigits(now.getMonth() + 1);
+        yyyy = now.getFullYear();
         yy = +yyyy.toString().slice(2);
 
         return (dateFormat === 'ua-date') ? `${dd}.${mm}.${yyyy}` : `${mm}/${dd}/${yy}`;
