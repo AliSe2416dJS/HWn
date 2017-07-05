@@ -2,9 +2,7 @@
 
 class Dog extends Pet {
     constructor (name, color, price) {
-        super();
+        super(color, price);
         this.name = name;
-        this.color = color;
-        this.price = price;
     }
 }

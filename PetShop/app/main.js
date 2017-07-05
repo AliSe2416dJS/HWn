@@ -10,7 +10,7 @@ function init () {
 //    view.showPets('Expensive pets', shop.expensivePets);
 //    view.showPets('White or fluffy pets', shop.whiteOrFluffy);
 
-    view.showPets('Cats', Shop1.getCats());
-    view.showPets('Expensive pets', Shop1.getExpensivePets());
-    view.showPets('White or fluffy pets', Shop1.getWhiteOrFluffy());   
+    view.showPets('Cats', shop1.getCats());
+    view.showPets('Expensive pets', shop1.getExpensivePets());
+    view.showPets('White or fluffy pets', shop1.getWhiteOrFluffy());   
 }

@@ -2,10 +2,8 @@
 
 class Cat extends Pet {
     constructor (name, isFluffy, color, price) {
-        super();
+        super(color, price);
         this.name = name;
         this.isFluffy = isFluffy;
-        this.color = color;
-        this.price = price;
     }
 }

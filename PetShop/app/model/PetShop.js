@@ -39,14 +39,14 @@ class PetShop {
     get whiteOrFluffy () {
         let whiteAndFluffyList = [];
 
-        whiteAndFluffyList = this.petList.filter((pet) => pet.color === 'White' || pet.isFluffy);
+        whiteAndFluffyList = this.petList.filter((pet) => pet.isWhite || pet.isFluffy);
 
         return whiteAndFluffyList;
     }
 }
 
 
-let Shop1 = (function () {
+let shop1 = (function () {
     let petList = [];
 
         petList.push(new Cat('Kitty', true, 'White', 500));
@@ -71,12 +71,12 @@ let Shop1 = (function () {
         petList.forEach((pet) => averagePrice += pet.price);
         averagePrice /= petList.length;
         expensivePetList = petList.filter((pet) => pet.price > averagePrice);
-
+console.dir(expensivePetList[0]);
         return expensivePetList;
     }
 
     function _getWhiteOrFluffy () {
-        return petList.filter((pet) => pet.color === 'White' || pet.isFluffy);
+        return petList.filter((pet) => pet.isWhite || pet.isFluffy);
     }
 
     return {

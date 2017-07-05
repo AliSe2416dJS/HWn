@@ -2,9 +2,7 @@
 
 class Hamster extends Pet {
     constructor (isFluffy, color, price) {
-        super();
+        super(color, price);
         this.isFluffy = isFluffy;
-        this.color = color;
-        this.price = price;
     }
 }

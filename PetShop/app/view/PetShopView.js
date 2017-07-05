@@ -4,9 +4,8 @@ class PetShopView {
 
     showPets (listName, petList) {
         let container = document.querySelector('.PetShop'),
-            template = `<div class="PetList">
-                            <p class="ListName">${listName}</p>
-                                <ul>`;
+            liTemplate = ``,
+            template =``;
 
         petList.forEach((pet) => {
             let petType;
@@ -19,10 +18,16 @@ class PetShopView {
                 petType = 'hamster';
             }
 
-            template += `<li>${pet.color} ${petType} ${pet.name || ''}${(pet.isFluffy) ? ' (fluffy)' : ''}</li>`;
+            liTemplate += `<li>${pet.color} ${petType} ${pet.name || ''}${(pet.isFluffy) ? ' (fluffy)' : ''}</li>`;
         });
 
-        template += `</ul></div>`;
+        template = `<div class="PetList">
+                        <p class="ListName">${listName}</p>
+                        <ul> 
+                            ${liTemplate}
+                        </ul>
+                    </div>`;
+
         container.innerHTML += template;
     }
 }

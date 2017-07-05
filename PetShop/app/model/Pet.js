@@ -5,4 +5,8 @@ class Pet {
         this.color = color;
         this.price = price;
     }
+
+    get isWhite () {
+        return this.color === 'White';
+    }
 }
