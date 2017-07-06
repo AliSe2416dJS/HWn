@@ -2,11 +2,39 @@
 
 class Pet {
     constructor (color, price) {
-        this.color = color;
-        this.price = price;
+        this._color = color;
+        this._price = price;
     }
 
-    get isWhite () {
-        return this.color === 'White';
+    get color () {
+        return this._color;
+    }
+
+    get price () {
+        return this._price;
+    }
+
+    isWhite () {
+        return this._color === 'White';
+    }
+
+    isFluffy () {
+        return undefined;
+    }
+
+    isWhiteOrFluffy () {
+        return this.isWhite() || this.isFluffy();
+    }
+
+    isCat () {
+        return false;
+    }
+
+    isDog () {
+        return false;
+    }
+
+    isHamster () {
+        return false;
     }
 }

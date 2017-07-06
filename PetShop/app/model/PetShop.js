@@ -2,6 +2,35 @@
 
 class PetShop {
     constructor () {
+        this._petList = this._createPetList();
+    }
+
+    get cats () {
+        let catList = this._petList.filter((pet) => pet.isCat());
+
+        return catList;
+    }
+
+    get expensivePets () {
+        let expensivePetList = [],
+            averagePrice = 0;
+            
+        averagePrice = this._petList.reduce((sum, pet) => sum + pet.price, 0) / this._petList.length;
+        expensivePetList = this._petList.filter((pet) => pet.price > averagePrice);
+        console.log('Average price is', averagePrice);
+
+        return expensivePetList;
+    }
+
+    get whiteOrFluffy () {
+        let whiteAndFluffyList = [];
+
+        whiteAndFluffyList = this._petList.filter((pet) => pet.isWhiteOrFluffy());
+
+        return whiteAndFluffyList;
+    }
+
+    _createPetList () {
         let petList = [];
 
         petList.push(new Cat('Kitty', true, 'White', 500));
@@ -15,39 +44,38 @@ class PetShop {
         petList.push(new Hamster(true, 'Black', 160));
         petList.push(new Hamster(false, 'Spotted', 250));
 
-        this.petList = petList;
-    }
-
-    get cats () {
-        let catList = this.petList.filter((pet) => pet instanceof Cat);
-
-        return catList;
-    }
-
-    get expensivePets () {
-        let expensivePetList = [],
-            averagePrice = 0;
-            
-        this.petList.forEach((pet) => averagePrice += pet.price);
-        averagePrice /= this.petList.length;
-        expensivePetList = this.petList.filter((pet) => pet.price > averagePrice);
-        console.log('Average price is', averagePrice);
-
-        return expensivePetList;
-    }
-
-    get whiteOrFluffy () {
-        let whiteAndFluffyList = [];
-
-        whiteAndFluffyList = this.petList.filter((pet) => pet.isWhite || pet.isFluffy);
-
-        return whiteAndFluffyList;
+        return petList;
     }
 }
 
 
 let shop1 = (function () {
-    let petList = [];
+    let petList = createPetList();
+    
+    function _getCats () {
+        return petList.filter((pet) => pet.isCat()); // pet.isCat instead of (pet innstanceof Cat). Is it a better idea?
+    }
+
+    function _getExpensivePets () {
+        let expensivePetList = [],
+            averagePrice = 0;
+
+        averagePrice = petList.reduce((sum, pet) => sum + pet.price, 0) / petList.length;
+        expensivePetList = petList.filter((pet) => pet.price > averagePrice);
+        console.log('Average price is', averagePrice);
+        console.dir(expensivePetList[0]);
+        console.log(expensivePetList[0]);
+        console.log(expensivePetList[0].toJSON());
+
+        return expensivePetList;
+    }
+
+    function _getWhiteOrFluffy () {
+        return petList.filter((pet) => pet.isWhiteOrFluffy());
+    }
+
+    function createPetList () {
+        let petList = [];
 
         petList.push(new Cat('Kitty', true, 'White', 500));
         petList.push(new Cat('Tom', false, 'Grey', 150));
@@ -60,23 +88,7 @@ let shop1 = (function () {
         petList.push(new Hamster(true, 'Black', 160));
         petList.push(new Hamster(false, 'Spotted', 250));
 
-    function _getCats () {
-        return petList.filter((pet) => pet instanceof Cat);
-    }
-
-    function _getExpensivePets () {
-        let expensivePetList = [],
-            averagePrice = 0;
-            
-        petList.forEach((pet) => averagePrice += pet.price);
-        averagePrice /= petList.length;
-        expensivePetList = petList.filter((pet) => pet.price > averagePrice);
-console.dir(expensivePetList[0]);
-        return expensivePetList;
-    }
-
-    function _getWhiteOrFluffy () {
-        return petList.filter((pet) => pet.isWhite || pet.isFluffy);
+        return petList;
     }
 
     return {
