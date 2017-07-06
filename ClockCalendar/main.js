@@ -3,11 +3,14 @@
 document.addEventListener('DOMContentLoaded', init, false);
 
 function init () {
-    let widget = new Widget(),
-        view = new View(widget);
+    let clockCalendar = new ClockCalendar(),
+        view = new View();
 
-    view.showTime(widget.getWidgetValue());
-    setInterval(() => view.refresh(widget.getWidgetValue()), 1000);
+    clockCalendar.start();
+    view.showTime(clockCalendar.now);
+    view.addListeners(clockCalendar);
+    
+    setInterval(() => view.refresh(clockCalendar.now), 1000);
 }
 
 
