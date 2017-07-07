@@ -2,10 +2,16 @@
 
 class ClockCalendar {
     constructor () {
+   //     super();
+
         this._now = new Date();
         this._dateFormat = 'ua-date';
         this._timeFormat = 'full';
         this._mode = 'clock';
+    }
+
+    get now () {
+        return (this._mode === 'clock') ? this._getTime() : this._getDate();
     }
 
     start () {
@@ -22,10 +28,6 @@ class ClockCalendar {
         } else {
             this._timeFormat = (this._timeFormat === 'full') ? 'short' : 'full';
         }
-    }
-
-    get now () {
-        return (this._mode === 'clock') ? this._getTime() : this._getDate();
     }
 
     _getTime () {
