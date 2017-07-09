@@ -2,8 +2,6 @@
 
 class ClockCalendar {
     constructor () {
-   //     super();
-
         this._now = new Date();
         this._dateFormat = 'ua-date';
         this._timeFormat = 'full';

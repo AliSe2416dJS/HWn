@@ -1,38 +1,57 @@
 'use strict';
 
-class Clock extends HTMLElement {
+class ClockCalendar extends HTMLElement {
     constructor () {
         super();
 
-        this._dateFormat = 'ua-date';
-        this._timeFormat = 'full';
-        this._mode = 'clock';
+        this._dateFormat = 'eu-date';
+        this._timeFormat = 'short';
+        this._mode = 'calendar';
         this._now = new Date();
     }
 
-    createdCallback () {
+    attachedCallback () {
+        let root = this.createShadowRoot();
+
+        root.innerHTML = `
+            <div pseudo="widget-container"> 
+                <div pseudo="widget-name">Clock / Calendar</div>
+                <content pseudo="widget-content"></content>
+            </div>
+        `;
         this.start();
 
         this.addEventListener('mouseover', () => document.querySelector('.ClockCalendar').classList.toggle('hovered'), false);
-        this.addEventListener('mouseover', () => document.querySelector('.ClockCalendar').classList.toggle('hovered'), false);
-        this.addEventListener('click', this.switchFormat(), false); 
+        this.addEventListener('mouseout',  () => document.querySelector('.ClockCalendar').classList.toggle('hovered'), false);
+        this.addEventListener('click', () => {
+            this.switchFormat();
+            this.refresh();
+        }, false); 
         this.addEventListener('contextmenu', e => {
             e.preventDefault();
             this.switchMode();
-            this.innerHTML = this.now;
+            this.refresh();
         }, false);
+
+
     }
 
     start () {
+//      this.refresh();
+
         setInterval(() => {
             this._now = new Date();
             console.log(this.now);
-            this.innerHTML = this.now;
+            this.refresh();
         }, 1000);
     }
 
+    refresh () {
+        this.innerHTML = this.now;
+    }
+
     get now () {
-        return (this._mode === 'clock') ? this._getTime() : this._getDate();
+        return (this._mode === 'calendar') ? this._getDate() : this._getTime();
     }
 
     switchMode () {
@@ -70,3 +89,5 @@ class Clock extends HTMLElement {
         return (n < 10) ? '0' + n : n;
     }
 }
+
+document.registerElement('clock-calendar', ClockCalendar);
