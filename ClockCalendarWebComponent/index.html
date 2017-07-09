@@ -1,15 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Clock 1</title>
+	<title>Clock (Web Component)</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<script src="ClockCalendar.js"></script>
 </head>
 <body>
 	
 	<div class="ClockCalendar">
-		<clock-calendar id="cc">...</clock-calendar>
+		<clock-calendar id="cc"></clock-calendar>
 	</div>
+
+	<template id="tpl">
+		<div> 
+            <div>Clock / Calendar</div>
+            <content></content>
+        </div>
+	</template>
 
 </body>
 </html>

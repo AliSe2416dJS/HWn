@@ -8,17 +8,15 @@ class ClockCalendar extends HTMLElement {
         this._timeFormat = 'short';
         this._mode = 'calendar';
         this._now = new Date();
+        this._nowCash = new Date();
     }
 
     attachedCallback () {
-        let root = this.createShadowRoot();
+        let root = this.createShadowRoot(),
+            tpl = document.querySelector('#tpl');
 
-        root.innerHTML = `
-            <div pseudo="widget-container"> 
-                <div pseudo="widget-name">Clock / Calendar</div>
-                <content pseudo="widget-content"></content>
-            </div>
-        `;
+        root.appendChild(tpl.content);
+
         this.start();
 
         this.addEventListener('mouseover', () => document.querySelector('.ClockCalendar').classList.toggle('hovered'), false);
@@ -32,8 +30,6 @@ class ClockCalendar extends HTMLElement {
             this.switchMode();
             this.refresh();
         }, false);
-
-
     }
 
     start () {
@@ -47,7 +43,11 @@ class ClockCalendar extends HTMLElement {
     }
 
     refresh () {
-        this.innerHTML = this.now;
+        if (this.now !== this._nowCash) {
+            this.innerHTML = this.now;
+            this._nowCash = this.now;
+            console.log('DOM updated');
+        }
     }
 
     get now () {
