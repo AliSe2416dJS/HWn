@@ -33,16 +33,16 @@ class PetShop {
     _createPetList () {
         let petList = [];
 
-        petList.push(new Cat('Kitty', true, 'White', 500));
-        petList.push(new Cat('Tom', false, 'Grey', 150));
-        petList.push(new Cat('Barsik', false, 'Striped', 400));
-        petList.push(new Cat('Murzik',true, 'Red', 600));
+        petList.push(new Cat('Kitty', 8, 'White', 500));
+        petList.push(new Cat('Tom', 2, 'Grey', 150));
+        petList.push(new Cat('Barsik', 4, 'Striped', 400));
+        petList.push(new Cat('Murzik', 7, 'Red', 600));
         petList.push(new Dog('Bingo', 'White', 400));
         petList.push(new Dog('Bob', 'Black', 300));
         petList.push(new Dog('Patrick', 'Red', 650));
-        petList.push(new Hamster(false, 'White', 550));
-        petList.push(new Hamster(true, 'Black', 160));
-        petList.push(new Hamster(false, 'Spotted', 250));
+        petList.push(new Hamster(2, 'White', 550));
+        petList.push(new Hamster(6, 'Black', 160));
+        petList.push(new Hamster(3, 'Spotted', 250));
 
         return petList;
     }
@@ -63,9 +63,6 @@ let shop1 = (function () {
         averagePrice = petList.reduce((sum, pet) => sum + pet.price, 0) / petList.length;
         expensivePetList = petList.filter((pet) => pet.price > averagePrice);
         console.log('Average price is', averagePrice);
-        console.dir(expensivePetList[0]);
-        console.log(expensivePetList[0]);
-        console.log(expensivePetList[0].toJSON());
 
         return expensivePetList;
     }
@@ -77,16 +74,16 @@ let shop1 = (function () {
     function createPetList () {
         let petList = [];
 
-        petList.push(new Cat('Kitty', true, 'White', 500));
-        petList.push(new Cat('Tom', false, 'Grey', 150));
-        petList.push(new Cat('Barsik', false, 'Striped', 400));
-        petList.push(new Cat('Murzik',true, 'Red', 600));
+        petList.push(new Cat('Kitty', 8, 'White', 500));
+        petList.push(new Cat('Tom', 2, 'Grey', 150));
+        petList.push(new Cat('Barsik', 4, 'Striped', 400));
+        petList.push(new Cat('Murzik', 7, 'Red', 600));
         petList.push(new Dog('Bingo', 'White', 400));
         petList.push(new Dog('Bob', 'Black', 300));
         petList.push(new Dog('Patrick', 'Red', 650));
-        petList.push(new Hamster(false, 'White', 550));
-        petList.push(new Hamster(true, 'Black', 160));
-        petList.push(new Hamster(false, 'Spotted', 250));
+        petList.push(new Hamster(2, 'White', 550));
+        petList.push(new Hamster(6, 'Black', 160));
+        petList.push(new Hamster(3, 'Spotted', 250));
 
         return petList;
     }

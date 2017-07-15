@@ -13,19 +13,19 @@ class Cat extends Pet {
     }
 
     isFluffy () {
-        return this._fluffy;
+        return this._fluffy > 5;
     }
 
     isCat () {
         return true;
     }
 
-    toJSON () {
+ /*   toJSON () {
         return {
             name: this._name,
             fluffy: this._fluffy,
             color:this._color,
             price: this._price
         }
-    }
+    }*/
 }

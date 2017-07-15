@@ -8,7 +8,7 @@ class Hamster extends Pet {
     }
 
     isFluffy () {
-        return this._fluffy;
+        return this._fluffy > 3;
     }
 
     isHamster () {

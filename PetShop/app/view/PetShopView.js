@@ -19,7 +19,10 @@ class PetShopView {
                 petType = 'hamster';
             }
 
-            liList += `<li>${pet.color} ${petType} ${pet.name || ''}${(pet.isFluffy())? ' (fluffy)': ''}</li>`;
+            liList += `<li>
+                            ${pet.color} ${petType} ${pet.name || ''}
+                            ${pet.isFluffy()? ' (fluffy)': ''}
+                        </li>`;
         });
 
         tpl = template._generatePetList(liList, listName);

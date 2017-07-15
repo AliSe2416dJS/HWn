@@ -16,15 +16,19 @@ class ClockCalendar extends HTMLElement {
             tpl = document.querySelector('#tpl');
 
         root.appendChild(tpl.content);
-
         this.start();
 
-        this.addEventListener('mouseover', () => document.querySelector('.ClockCalendar').classList.toggle('hovered'), false);
-        this.addEventListener('mouseout',  () => document.querySelector('.ClockCalendar').classList.toggle('hovered'), false);
+        this.addEventListener('mouseover', () => 
+            document.querySelector('.ClockCalendar').classList.toggle('hovered'), false);
+
+        this.addEventListener('mouseout',  () => 
+            document.querySelector('.ClockCalendar').classList.toggle('hovered'), false);
+
         this.addEventListener('click', () => {
             this.switchFormat();
             this.refresh();
         }, false); 
+
         this.addEventListener('contextmenu', e => {
             e.preventDefault();
             this.switchMode();
@@ -33,7 +37,7 @@ class ClockCalendar extends HTMLElement {
     }
 
     start () {
-//      this.refresh();
+      //  this.refresh.();
 
         setInterval(() => {
             this._now = new Date();
