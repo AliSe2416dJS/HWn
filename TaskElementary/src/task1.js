@@ -7,7 +7,7 @@ function task1 (width, height, character) {
         preValidate1(width, height, character);
         out = createChessBoard(width, height, character);
     } catch (err) {
-        out = {status: 'failed', reason: err.message};
+        out = {status: "failed", reason: err.message};
     }
 
     return out;
@@ -19,7 +19,7 @@ function createChessBoard (width, height, character) {
     for (let i = 1; i <= height; i++) {
         board += '|';
 
-    	for (let j = 1; j <= width; j++) {
+        for (let j = 1; j <= width; j++) {
     	    if (i % 2) {
     	        board += character + ' ';
             } else {
@@ -29,7 +29,7 @@ function createChessBoard (width, height, character) {
         
         board += '|\n';
     }
-    console.log(board.length);
+   // console.log(board.length);
     return board;
 }
 

@@ -1,5 +1,11 @@
 'use strict';
 
+/*class HTMLElement {
+    constructor () {
+        
+    }
+}*/
+
 class ClockCalendar extends HTMLElement {
     constructor () {
         super();
@@ -37,8 +43,6 @@ class ClockCalendar extends HTMLElement {
     }
 
     start () {
-      //  this.refresh.();
-
         setInterval(() => {
             this._now = new Date();
             console.log(this.now);
