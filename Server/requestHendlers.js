@@ -1,10 +1,14 @@
 'use strict';
 
-let fs = require('fs');
+let fs = require('fs'),
+    path = require('path');
 
 function getTime (response) {
     let now = new Date(),
-        time = `${now.getHours()}:${now.getMinutes()}`;
+        hh = _toTwoDigits(now.getHours()),
+        mm = _toTwoDigits(now.getMinutes()),
+        ss = _toTwoDigits(now.getSeconds()),
+        time = `${hh}:${mm}:${ss}`;
 
     console.log('request handler "time" was called');
     response.writeHead(200, {"Content-Type": "text/plain"});
@@ -14,7 +18,10 @@ function getTime (response) {
 
 function getDate (response) {
     let now = new Date(),
-        date = `${now.getDate()}.${now.getMonth()+1}.${now.getFullYear()}`;
+        dd = _toTwoDigits(now.getDate()),
+        mm = _toTwoDigits(now.getMonth() + 1),
+        yyyy = now.getFullYear(),
+        date = `${dd}.${mm}.${yyyy}`;
 
     console.log('request handler "time" was called');
     response.writeHead(200, {"Content-Type": "text/plain"});
@@ -22,22 +29,26 @@ function getDate (response) {
     response.end();
 }
 
-function uploadIndex (response) {
-    console.log('request handler "uploadIndex" was called');
+function uploadStatic (response) {
+    console.log('request handler "uploadStatic" was called');
 
-    fs.readFile("./index.html", "binary", function (error, file) {
+    fs.readFile('./index.html', "binary", function (error, file) {
         if (error) {
             response.writeHead(500, {"Content-Type": "text/plain"});
             response.write(error + "\n");
             response.end();
         } else {
-            response.writeHead(200, {"Content-Type": "text/html"});
+            response.writeHead(200, {"Content-Type": 'text/html'});
             response.write(file, "binary");
             response.end();
         }
-  });
+    });
+}
+
+function _toTwoDigits (n) {
+    return (n < 10)? '0' + n: n;
 }
 
 exports.getTime = getTime;
 exports.getDate = getDate;
-exports.uploadIndex = uploadIndex;
+exports.uploadStatic = uploadStatic;

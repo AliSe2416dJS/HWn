@@ -2,9 +2,65 @@
 <html>
 <head>
 	<title>Uploaded from server</title>
+	<script type="text/javascript">
+		'use strict';
+
+		document.addEventListener('DOMContentLoaded', init, false);
+
+		function init () {
+			let btngetTimeFromServer = document.querySelector('.get-time-btn'),
+			    btngetDateFromServer = document.querySelector('.get-date-btn'),
+			    timeContainer = document.querySelector('.time'),
+			    dateContainer = document.querySelector('.date');
+
+			btngetTimeFromServer.addEventListener('click', () => {
+			    getDateFromServer(render, '/time', timeContainer);
+			}, false);
+
+			btngetDateFromServer.addEventListener('click', () => {
+			    getDateFromServer(render, '/date', dateContainer);
+			}, false);
+
+			function getDateFromServer (render, uri, container) {
+			    let xhr = new XMLHttpRequest();
+
+			    xhr.open('GET', uri, true);
+
+			    xhr.addEventListener('readystatechange', () => {
+			        if (xhr.readyState === 4) {
+			            if (xhr.status === 200) {
+			                render(xhr.responseText, container);
+			            }
+			        }
+			    }, false);
+
+			    xhr.send();
+			}
+
+			function render (text, container) {
+			    container.innerHTML = text;
+			}		
+		}
+	</script>
 </head>
 <body>
-	<h1>Uploaded from server</h1>
-	<p>Hi there!</p>
+	<header>
+		<h1>Uploaded from server</h1>
+		<p>Hi there!</p>
+	</header>
+	<main>
+		<div>
+			<button class="get-time-btn">Get time</button>
+			<div>
+				<p  class="time">Current time should be here</p>
+			</div>
+		</div>
+		<div>
+			<button class="get-date-btn">Get date</button>
+			<div>
+				<p  class="date">Current date should be here</p>
+			</div>
+		</div>
+	</main>
 </body>
 </html>

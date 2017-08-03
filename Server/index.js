@@ -5,7 +5,7 @@ let server = require('./server.js'),
     requestHandlers = require('./requestHendlers.js'),
     handle = {};
 
-handle['/'] = requestHandlers.uploadIndex;
+handle['/'] = requestHandlers.uploadStatic;
 handle['/time'] = requestHandlers.getTime;
 handle['/date'] = requestHandlers.getDate;
 
